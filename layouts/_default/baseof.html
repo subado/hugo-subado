@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+{{- partial "head.html" . -}}
+
+
+<body class="bg-white text-black dark:bg-black-dark dark:text-white-dark">
+  {{- partial "header.html" . -}}
+
+
+  <main class="prose dark:prose-invert max-w-none">
+    <div class="container">
+      {{- block "main" . }}{{- end }}
+    </div>
+  </main>
+
+  {{- partial "footer.html" . -}}
+</body>
+
+</html>

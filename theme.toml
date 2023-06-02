@@ -1,0 +1,10 @@
+name = "subado"
+license = "MIT"
+licenselink = "https://github.com/subado/hugo-subado/blob/master/LICENSE"
+description = ""
+tags = []
+features = []
+min_version = "0.41.0"
+
+[author]
+  name = "subado"

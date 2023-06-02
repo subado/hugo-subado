@@ -1,0 +1,27 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>
+    {{ block "title" . }}
+    {{- .Title }} -
+    {{ .Site.Title -}}
+    {{ end }}
+  </title>
+  {{- if .Description }}
+  <meta name="description" content="{{ .Description }}" />
+  {{ end -}}
+  {{- if .Keywords }}
+  <meta name="keywords" content="{{ delimit .Keywords " ," }}" />
+  {{ end -}}
+  {{- if .Params.Author }}
+  <meta name="author" content="{{ .Params.Author }}" />
+  {{ end -}}
+  {{ hugo.Generator }}
+
+  {{ $cssMain := resources.Get "css/compiled/main.css" | resources.Minify | resources.Fingerprint
+  .Site.Params.fingerprintAlgorithm | default "sha256"
+  }}
+
+
+  <link type="text/css" rel="stylesheet" href="{{ $cssMain.RelPermalink }}" integrity="{{ $cssMain.Data.Integrity }}" />
+</head>
