@@ -3,11 +3,11 @@
 {{- partial "head.html" . -}}
 
 
-<body class="bg-white text-black dark:bg-black-dark dark:text-white-dark">
+<body class="dark:bg-black-dark dark:text-white-dark bg-white text-black">
   {{- partial "header.html" . -}}
 
 
-  <main class="prose dark:prose-invert max-w-none">
+  <main class="prose max-w-none dark:prose-invert">
     <div class="container">
       {{- block "main" . }}{{- end }}
     </div>
