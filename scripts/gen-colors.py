@@ -23,7 +23,7 @@ MODELS: Final = {
 SCALES: Final = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
 
 colors = {}
-parser = argparse.ArgumentParser(description="generate colors for tailwind.conifg")
+parser = argparse.ArgumentParser(description='generate colors for tailwind.conifg')
 
 
 class StoreSequences(argparse.Action):
@@ -40,7 +40,7 @@ class StoreSequences(argparse.Action):
 
     def __init__(self, option_strings, dest, sequence, nargs=None, **kwargs):
         if nargs is not None:
-            raise ValueError("nargs not allowed")
+            raise ValueError('nargs not allowed')
         self.sequence = sequence
         super().__init__(option_strings, dest, nargs='+', **kwargs)
 
@@ -69,7 +69,7 @@ class AddOptional(argparse.Action):
 
     def __init__(self, option_strings, dest, nargs=None, **kwargs):
         if nargs is not None:
-            raise ValueError("nargs not allowed")
+            raise ValueError('nargs not allowed')
         super().__init__(option_strings, dest, nargs=0, **kwargs)
 
     def __call__(self, parser, namespace, values, option_string=None) -> None:
