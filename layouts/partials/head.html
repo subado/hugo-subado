@@ -18,10 +18,19 @@
   {{ end -}}
   {{ hugo.Generator }}
 
-  {{ $cssMain := resources.Get "css/compiled/main.css" | resources.Minify | resources.Fingerprint
-  .Site.Params.fingerprintAlgorithm | default "sha256"
+  {{ $assets := newScratch }}
+  {{ $algorithm := .Site.Params.fingerprintAlgorithm | default "sha256" }}
+
+  {{ $cssMain := resources.Get "css/compiled/main.css" }}
+  {{ $cssScheme := resources.Get (printf "css/schemes/%s.css" (lower .Site.Params.colorScheme | default "subado")) }}
+
+  {{ $assets.Add "css" (slice $cssScheme $cssMain) }}
+  {{ $cssBundle := $assets.Get "css" | resources.Concat "css/bundle.css" | resources.Minify |
+  resources.Fingerprint
+  $algorithm
   }}
 
 
-  <link type="text/css" rel="stylesheet" href="{{ $cssMain.RelPermalink }}" integrity="{{ $cssMain.Data.Integrity }}" />
+  <link type="text/css" rel="stylesheet" href="{{ $cssBundle.RelPermalink }}"
+    integrity="{{ $cssBundle.Data.Integrity }}" />
 </head>
