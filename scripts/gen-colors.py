@@ -23,7 +23,6 @@ MODELS: Final = {
 SCALES: Final = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
 
 colors = {}
-parser = argparse.ArgumentParser(description='generate colors for tailwind.conifg')
 
 
 class StoreSequences(argparse.Action):
@@ -107,20 +106,25 @@ class GenColors(argparse.Action):
             self.clearAttrs(namespace)
 
 
-required = parser.add_argument_group('required')
-required.add_argument('-c', '--colors', type=str, help='a color names', nargs='+', required=True, action=GenColors, dest=COLORS_DEST)
-required.add_argument('-m', '--model', choices=MODELS.keys(),
-                      type=str, help='a color model', required=True, action=GenColors, dest=MODEL_DEST)
+def main():
+    parser = argparse.ArgumentParser(description='generate colors for tailwind.conifg')
+    required = parser.add_argument_group('required')
+    required.add_argument('-c', '--colors', type=str, help='a color names', nargs='+', required=True, action=GenColors, dest=COLORS_DEST)
+    required.add_argument('-m', '--model', choices=MODELS.keys(),
+                          type=str, help='a color model', required=True, action=GenColors, dest=MODEL_DEST)
 
-parser.add_argument('-s', '--scales',
-                    type=str, help=f'a color scales {SCALES}. Also you can use syntax like {SCALES[0]}-{SCALES[-1]}', sequence=SCALES, action=StoreSequences, dest=SCALES_DEST, default=SCALES)
-parser.add_argument('-d', '--default',
-                    help='add DEFAULT to next colors', action='store_true', dest=DEFAULT_DEST)
-parser.add_argument('--transparent',
-                    help='add transparent to output json', const='transparent', action=AddOptional)
-parser.add_argument('--currentColor',
-                    help='add currentColor to output json', const='currentColor', action=AddOptional)
+    parser.add_argument('-s', '--scales',
+                        type=str, help=f'a color scales {SCALES}. Also you can use syntax like {SCALES[0]}-{SCALES[-1]}', sequence=SCALES, action=StoreSequences, dest=SCALES_DEST, default=SCALES)
+    parser.add_argument('-d', '--default',
+                        help='add DEFAULT to next colors', action='store_true', dest=DEFAULT_DEST)
+    parser.add_argument('--transparent',
+                        help='add transparent to output json', const='transparent', action=AddOptional)
+    parser.add_argument('--currentColor',
+                        help='add currentColor to output json', const='currentColor', action=AddOptional)
+
+    parser.parse_args()
+    print(json.dumps(colors, indent=2))
 
 
-parser.parse_args()
-print(json.dumps(colors, indent=2))
+if __name__ == "__main__":
+    main()
