@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # For generate default colors use:
-# ./gen-colors.py --transparent --currentColor -m rgb -dc neutral -c primary note tip warning important
+# ./gen-colors.py --transparent --currentColor -m hsl -dc neutral -c primary note tip warning important
 
 
 import json
