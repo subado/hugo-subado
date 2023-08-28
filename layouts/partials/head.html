@@ -22,12 +22,13 @@
   {{ $algorithm := .Site.Params.fingerprintAlgorithm | default "sha256" }}
 
   {{ $cssMain := resources.Get "css/compiled/main.css" }}
-  {{ $cssScheme := resources.Get (printf "css/schemes/%s.css" (lower .Site.Params.colorScheme | default "subado")) }}
+  {{ $cssScheme := resources.Get (printf "css/schemes/%s.css" (lower .Site.Params.scheme | default "default")) }}
 
   {{ $assets.Add "css" (slice $cssScheme $cssMain) }}
-  {{ $cssBundle := $assets.Get "css" | resources.Concat "css/bundle.css" | resources.Minify |
-    resources.Fingerprint
-    $algorithm
+  {{ $cssBundle := $assets.Get "css" |
+    resources.Concat "css/bundle.css" |
+    resources.Minify |
+    resources.Fingerprint $algorithm
   }}
 
 
