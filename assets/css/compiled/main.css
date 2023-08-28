@@ -1192,6 +1192,10 @@ select {
   margin-bottom: 0;
 }
 
+.pagination-page {
+  display: inline-block;
+}
+
 .m-auto {
   margin: auto;
 }
@@ -1199,6 +1203,11 @@ select {
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mb-0 {
