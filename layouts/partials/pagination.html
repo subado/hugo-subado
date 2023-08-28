@@ -1,0 +1,35 @@
+{{ $lastPagesNumber := .Site.Params.pagination.lastPagesNumber | default 1 }}
+{{ $pageGroupRadius := .Site.Params.pagination.pageGroupRadius | default 1 }}
+{{ $pagesInGroupNumber := add (mul $pageGroupRadius 2) 1 }}
+{{ $pagesDelimiter := .Site.Params.pagination.pagesDelimiter | default "..." }}
+
+{{ $paginator := .Paginator }}
+{{ $pagersGroups := newScratch }}
+
+{{ if (gt (sub $paginator.PageNumber $pageGroupRadius 2) $lastPagesNumber) }}
+  {{ $pagersGroups.Set "a" (first $lastPagesNumber $paginator.Pagers) }}
+{{ else }}
+  {{ $pagersGroups.Set "b" (first (add $paginator.PageNumber $pageGroupRadius) $paginator.Pagers) }}
+{{ end }}
+
+{{ if (lt (add $paginator.PageNumber $pageGroupRadius 1) (sub $paginator.TotalPages $lastPagesNumber)) }}
+  {{ $pagersGroups.Set "c" (last $lastPagesNumber $paginator.Pagers) }}
+{{ else if (not (isset $pagersGroups.Values "b")) }}
+  {{ $pagersGroups.Set "b" (last (add (sub $paginator.TotalPages $paginator.PageNumber) $pageGroupRadius 1) $paginator.Pagers) }}
+{{ end }}
+
+{{ if (not (isset $pagersGroups.Values "b")) }}
+  {{ $pagersGroups.Set "b" (first $pagesInGroupNumber (after (math.Max (sub $paginator.PageNumber $pageGroupRadius 1) 0)  $paginator.Pagers)) }}
+{{ end}}
+
+
+<ul class="mx-auto text-center">
+{{ range $pagers := $pagersGroups.Values }}
+  {{ range $pager := $pagers }}
+    {{ partial "pagination/pager.html" $pager }}
+  {{ end }}
+    {{ if (index (last 1 $pagers) 0).HasNext }}
+      <li class="pagination-page">{{ $pagesDelimiter }}</li>
+    {{ end }}
+{{ end }}
+</ul>

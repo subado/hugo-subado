@@ -1,12 +1,15 @@
 {{ define "main" }}
+
 <article>
   <h1>{{ .Title }}</h1>
   {{ if .Content }}
   {{ .Content }}
   {{ end }}
 </article>
+
+{{ $paginator := .Paginator }}
 <ul class="list-none justify-items-center pl-0">
-  {{- range first .Site.Params.PagesLimit .Pages -}}
+  {{ range $paginator.Pages }}
   <li class="p-0">
     <h2 class="not-prose mb-0">
       <a href="{{ .Permalink }}">{{ .Title }}</a>
@@ -16,6 +19,9 @@
       {{ .Date.Format "Mon, Jan 2, 2006" }}
     </p>
   </li>
-  {{- end -}}
+  {{ end }}
 </ul>
+
+{{- partial "pagination.html" . -}}
+
 {{ end }}
