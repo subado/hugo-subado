@@ -22,14 +22,31 @@
   {{ $pagersGroups.Set "b" (first $pagesInGroupNumber (after (math.Max (sub $paginator.PageNumber $pageGroupRadius 1) 0)  $paginator.Pagers)) }}
 {{ end}}
 
-
-<ul class="mx-auto text-center">
-{{ range $pagers := $pagersGroups.Values }}
-  {{ range $pager := $pagers }}
-    {{ partial "pagination/pager.html" $pager }}
+<div class="flex flex-row">
+  {{ if $paginator.HasPrev }}
+  <a href='{{ $paginator.Prev.URL }}'>
+    <img
+        src="{{ (resources.Get "svg/prev.svg").RelPermalink }}"
+    />
+  </a>
   {{ end }}
-    {{ if (index (last 1 $pagers) 0).HasNext }}
-      <li class="pagination-page">{{ $pagesDelimiter }}</li>
+
+  <ul class="mx-auto text-center">
+  {{ range $pagers := $pagersGroups.Values }}
+    {{ range $pager := $pagers }}
+      {{ partial "pagination/pager.html" $pager }}
     {{ end }}
-{{ end }}
-</ul>
+      {{ if (index (last 1 $pagers) 0).HasNext }}
+        <li class="pagination-page">{{ $pagesDelimiter }}</li>
+      {{ end }}
+  {{ end }}
+  </ul>
+
+  {{ if $paginator.HasNext }}
+  <a href='{{ $paginator.Next.URL }}'>
+    <img
+        src="{{ (resources.Get "svg/next.svg").RelPermalink }}"
+    />
+  </a>
+  {{ end }}
+</div>
