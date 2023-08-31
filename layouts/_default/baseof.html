@@ -2,14 +2,13 @@
 <html>
 {{- partial "head.html" . -}}
 
-
 <body class="dark:bg-black-dark dark:text-white-dark bg-white text-black">
   {{- partial "header.html" . -}}
 
-
   <main class="prose max-w-none dark:prose-invert">
     <div class="container">
-      {{- block "main" . }}{{- end }}
+      {{- block "main" . }}
+      {{- end }}
     </div>
   </main>
 
