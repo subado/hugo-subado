@@ -22,16 +22,14 @@
   {{ $pagersGroups.Set "b" (first $pagesInGroupNumber (after (math.Max (sub $paginator.PageNumber $pageGroupRadius 1) 0)  $paginator.Pagers)) }}
 {{ end}}
 
-<div class="flex flex-row">
+<div class="flex flex-row content-center">
   {{ if $paginator.HasPrev }}
-  <a href='{{ $paginator.Prev.URL }}'>
-    <img
-        src="{{ (resources.Get "svg/prev.svg").RelPermalink }}"
-    />
+  <a class="text-center" href='{{ $paginator.Prev.URL }}'>
+    {{ partial "svg/prev.html" . }}
   </a>
   {{ end }}
 
-  <ul class="mx-auto text-center">
+  <ul class="mx-auto text-center px-0">
   {{ range $pagers := $pagersGroups.Values }}
     {{ range $pager := $pagers }}
       {{ partial "pagination/pager.html" $pager }}
@@ -44,9 +42,7 @@
 
   {{ if $paginator.HasNext }}
   <a href='{{ $paginator.Next.URL }}'>
-    <img
-        src="{{ (resources.Get "svg/next.svg").RelPermalink }}"
-    />
+    {{ partial "svg/next.html" . }}
   </a>
   {{ end }}
 </div>
