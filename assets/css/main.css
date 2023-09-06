@@ -6,4 +6,7 @@
   .pagination-page {
     @apply inline-block;
   }
+  .pagination-arrow {
+    @apply w-[32px] h-[32px];
+  }
 }
