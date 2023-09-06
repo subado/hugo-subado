@@ -1,0 +1,75 @@
+:root {
+  /* Gray */
+  --color-neutral-50: 0 0% 95%;
+  --color-neutral-100: 0 0% 90%;
+  --color-neutral-200: 0 0% 80%;
+  --color-neutral-300: 0 0% 70%;
+  --color-neutral-400: 0 0% 60%;
+  --color-neutral-500: 0 0% 50%;
+  --color-neutral-600: 0 0% 40%;
+  --color-neutral-700: 0 0% 30%;
+  --color-neutral-800: 0 0% 20%;
+  --color-neutral-900: 0 0% 10%;
+  --color-neutral-950: 0 0% 5%;
+  --color-neutral: 0 0% 0%;
+  /* Blue */
+  --color-primary-50: 207 61% 95%;
+  --color-primary-100: 207 61% 91%;
+  --color-primary-200: 207 61% 83%;
+  --color-primary-300: 207 61% 75%;
+  --color-primary-400: 207 61% 67%;
+  --color-primary-500: 207 61% 59%;
+  --color-primary-600: 207 61% 47%;
+  --color-primary-700: 207 61% 35%;
+  --color-primary-800: 207 61% 23%;
+  --color-primary-900: 207 61% 11%;
+  --color-primary-950: 207 61% 5%;
+  /* Cyan */
+  --color-note-50: 187 47% 95%;
+  --color-note-100: 187 47% 91%;
+  --color-note-200: 187 47% 82%;
+  --color-note-300: 187 47% 73%;
+  --color-note-400: 187 47% 64%;
+  --color-note-500: 187 47% 55%;
+  --color-note-600: 187 47% 44%;
+  --color-note-700: 187 47% 33%;
+  --color-note-800: 187 47% 22%;
+  --color-note-900: 187 47% 11%;
+  --color-note-950: 187 47% 5%;
+  /* Moss */
+  --color-tip-50: 102 28% 95%;
+  --color-tip-100: 102 28% 89%;
+  --color-tip-200: 102 28% 78%;
+  --color-tip-300: 102 28% 66%;
+  --color-tip-400: 102 28% 54%;
+  --color-tip-500: 102 28% 43%;
+  --color-tip-600: 102 28% 34%;
+  --color-tip-700: 102 28% 26%;
+  --color-tip-800: 102 28% 18%;
+  --color-tip-900: 102 28% 9%;
+  --color-tip-950: 102 28% 5%;
+  /* Hazel */
+  --color-warning-50: 47 50% 95%;
+  --color-warning-100: 47 50% 90%;
+  --color-warning-200: 47 50% 80%;
+  --color-warning-300: 47 50% 70%;
+  --color-warning-400: 47 50% 60%;
+  --color-warning-500: 47 50% 50%;
+  --color-warning-600: 47 50% 40%;
+  --color-warning-700: 47 50% 30%;
+  --color-warning-800: 47 50% 20%;
+  --color-warning-900: 47 50% 10%;
+  --color-warning-950: 47 50% 5%;
+  /* Red */
+  --color-important-50: 13 89% 95%;
+  --color-important-100: 13 89% 88%;
+  --color-important-200: 13 89% 74%;
+  --color-important-300: 13 89% 61%;
+  --color-important-400: 13 89% 47%;
+  --color-important-500: 13 89% 33%;
+  --color-important-600: 13 89% 27%;
+  --color-important-700: 13 89% 21%;
+  --color-important-800: 13 89% 14%;
+  --color-important-900: 13 89% 8%;
+  --color-important-950: 13 89% 5%;
+}
