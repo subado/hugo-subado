@@ -4,4 +4,12 @@
       <a class="font-sans text-xl font-bold leading-none" href="/">root</a>
     </li>
   </ul>
+  <button class="theme-switcher">
+    <span class="dark:hidden">
+      {{ partial "svg/sun.html" . }}
+    </span>
+    <span class="hidden dark:flex">
+      {{ partial "svg/moon.html" . }}
+    </span>
+  </button>
 </nav>

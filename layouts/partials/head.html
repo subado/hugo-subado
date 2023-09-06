@@ -38,4 +38,19 @@
     href="{{ $cssBundle.RelPermalink }}"
     integrity="{{ $cssBundle.Data.Integrity }}"
   />
+
+  {{ $jsDarkMode := resources.Get "js/darkMode.js" }}
+  {{ $assets.Add "js" (slice $jsDarkMode) }}
+  {{ $jsBundle := $assets.Get "js" |
+    resources.Concat "js/bundle.js" |
+    resources.Minify |
+    resources.Fingerprint $algorithm
+  }}
+
+  <script
+    defer
+    type="text/javascript"
+    src="{{ $jsBundle.RelPermalink }}"
+    integrity="{{ $jsBundle.Data.Integrity }}"
+  ></script>
 </head>
