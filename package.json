@@ -4,8 +4,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "NODE_ENV=development ./node_modules/tailwindcss/lib/cli.js -i assets/css/main.css -o assets/css/compiled/main.css -w",
-    "build": "NODE_ENV=production ./node_modules/tailwindcss/lib/cli.js -i assets/css/main.css -o assets/css/compiled/main.css"
+    "dev": "NODE_ENV=development npx tailwindcss -i assets/css/main.css -o assets/css/compiled/main.css -w & npx tsc --watch",
+    "build": "NODE_ENV=production npx tailwindcss -i assets/css/main.css -o assets/css/compiled/main.css; npx tsc"
   },
   "dependencies": {
     "@clack/prompts": "^0.6.3",
