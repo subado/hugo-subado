@@ -9,4 +9,7 @@
   .pagination-arrow {
     @apply w-[32px] h-[32px];
   }
+  .theme-icon {
+    @apply w-[32px] h-[32px];
+  }
 }

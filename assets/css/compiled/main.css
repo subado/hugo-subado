@@ -1063,7 +1063,7 @@ select {
   --tw-prose-body: #374151;
   --tw-prose-headings: #111827;
   --tw-prose-lead: #4b5563;
-  --tw-prose-links: #af00db;
+  --tw-prose-links: hsl(var(--color-primary-600) / 1);
   --tw-prose-bold: #111827;
   --tw-prose-counters: #6b7280;
   --tw-prose-bullets: #d1d5db;
@@ -1196,6 +1196,11 @@ select {
   display: inline-block;
 }
 
+.pagination-arrow {
+  height: 32px;
+  width: 32px;
+}
+
 .m-auto {
   margin: auto;
 }
@@ -1208,11 +1213,6 @@ select {
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
-}
-
-.my-auto {
-  margin-top: auto;
-  margin-bottom: auto;
 }
 
 .mb-0 {
@@ -1239,6 +1239,10 @@ select {
   flex-direction: row;
 }
 
+.content-center {
+  align-content: center;
+}
+
 .items-center {
   align-items: center;
 }
@@ -1261,6 +1265,11 @@ select {
 
 .p-6 {
   padding: 1.5rem;
+}
+
+.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .pl-0 {
