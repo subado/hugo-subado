@@ -1,8 +1,11 @@
 <nav class="sticky top-0 flex justify-between z-10 p-2 md:p-4 text-neutral-950 dark:text-neutral-50 border-b border-neutral-100 dark:border-neutral-800 w-full mb-5 backdrop-blur sm:backdrop-blur-lg" >
   <ul class="flex justify-center items-center">
-    <li class="mx-2 md:mx-4 hover:scale-110 font-sans text-xl font-bold transition-transform">
-      <a href="/">root</a>
-    </li>
+    {{ $items := slice }}
+    {{ $items = $items | append (slice (slice "/" "root" )) }}
+    {{ $items = $items | append (slice "/tags" "tags" ) }}
+    {{ range $items }}
+      {{ partial "header/menu-item.html" . }}
+    {{ end}}
   </ul>
   <button class="theme-switcher">
     <span class="dark:hidden">
