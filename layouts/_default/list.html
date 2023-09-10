@@ -1,23 +1,19 @@
 {{ define "main" }}
 
-<article>
-  <h1>{{ .Title }}</h1>
-  {{ if .Content }}
-    {{ .Content }}
-  {{ end }}
-</article>
+{{ partial "article.html" . }}
 
 {{ $paginator := .Paginator }}
-<ul class="list-none justify-items-center pl-0">
+<ul class="list-none flex flex-col justify-items-center pl-0">
   {{ range $paginator.Pages }}
-  <li class="p-0">
-    <h2 class="not-prose mb-0">
+  <li class="flex flex-col bg-neutral-50 dark:bg-neutral-900 p-2">
+    <h4 class="not-prose m-1" >
       <a href="{{ .Permalink }}">{{ .Title }}</a>
-    </h2>
-    {{- partial "summary.html" . -}}
-    <p class="text-gray dark:text-gray-dark">
-      {{ .Date.Format "Mon, Jan 2, 2006" }}
-    </p>
+    </h4>
+    <div class="flex gap-x-4">
+      <div>{{ .Date | time.Format ":date_short"}}</div>
+      <div>{{ math.Max (div .WordCount 200) 1 }} minutes</div>
+    </div>
+      {{ .Summary }}
   </li>
   {{ end }}
 </ul>
