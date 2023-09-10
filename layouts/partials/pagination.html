@@ -22,17 +22,18 @@
   {{ $pagersGroups.Set "b" (first $pagesInGroupNumber (after (math.Max (sub $paginator.PageNumber $pageGroupRadius 1) 0)  $paginator.Pagers)) }}
 {{ end}}
 
-<div class="flex not-prose mt-2 mb-4">
+<div class="flex items-center not-prose mt-2 mb-4 p-2 bg-neutral-50 dark:bg-neutral-900">
+  {{ $arrow := newScratch }}
+  {{ $arrow.Set "svg" "svg/prev.html" }}
   {{ if $paginator.HasPrev }}
-  <a class="my-auto hover:text-primary-300 dark:hover:text-primary-400" href='{{ $paginator.Prev.URL }}'>
-    {{ partial "svg/prev.html" . }}
-  </a>
+    {{ $arrow.Set "url" $paginator.Prev.URL }}
   {{ end }}
+  {{ partial "pagination/arrow.html" $arrow }}
 
   <ul class="mx-auto text-center">
   {{ range $pagers := $pagersGroups.Values }}
     {{ range $pager := $pagers }}
-      {{ $class := "inline-block py-1 min-w-[2rem] hover:text-primary-300 dark:hover:text-primary-400"}}
+      {{ $class := "inline-block py-0.5 min-w-[2rem] hover:text-primary-300 dark:hover:text-primary-400"}}
       {{ if (eq $paginator.PageNumber $pager.PageNumber) }}
         {{ $class = (print $class " " "ring-2 rounded ring-primary-300 text-primary-300  dark:ring-primary-400 dark:text-primary-400") }}
       {{ end }}
@@ -48,9 +49,9 @@
   {{ end }}
   </ul>
 
+  {{ $arrow := newScratch }}
+  {{ $arrow.Set "svg" "svg/next.html" }}
   {{ if $paginator.HasNext }}
-  <a class="my-auto hover:text-primary-300 dark:hover:text-primary-400" href='{{ $paginator.Next.URL }}'>
-    {{ partial "svg/next.html" . }}
-  </a>
+    {{ $arrow.Set "url" $paginator.Next.URL }}
   {{ end }}
-</div>
+  {{ partial "pagination/arrow.html" $arrow }}</div>
