@@ -4,7 +4,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "NODE_ENV=development npx tailwindcss -i assets/css/main.css -o assets/css/compiled/main.css -w & npx tsc --watch",
+    "dev": "(trap 'kill 0' SIGINT; NODE_ENV=development npx tailwindcss -i assets/css/main.css -o assets/css/compiled/main.css -w & npx tsc --watch & wait)",
     "build": "NODE_ENV=production npx tailwindcss -i assets/css/main.css -o assets/css/compiled/main.css; npx tsc"
   },
   "dependencies": {
