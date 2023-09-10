@@ -1,0 +1,9 @@
+{{ if (.Get "url") }}
+  <a class="hover:text-primary-300 dark:hover:text-primary-400" href='{{ (.Get "url") }}'>
+      {{ partial (.Get "svg") . }}
+  </a>
+{{ else }}
+  <span class="text-neutral-200 dark:text-neutral-800">
+      {{ partial (.Get "svg") . }}
+  </span>
+{{ end }}
