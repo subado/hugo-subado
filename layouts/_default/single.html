@@ -1,6 +1,3 @@
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
-<article>
-  {{ .Content }}
-</article>
+{{ partial "article.html" . }}
 {{ end }}
