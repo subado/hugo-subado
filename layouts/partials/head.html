@@ -23,8 +23,9 @@
 
   {{ $cssMain := resources.Get "css/compiled/main.css" }}
   {{ $cssScheme := resources.Get (printf "css/schemes/%s.css" (lower .Site.Params.scheme | default "default")) }}
+  {{ $cssKatex := resources.Get "css/katex.min.css" }}
 
-  {{ $assets.Add "css" (slice $cssScheme $cssMain) }}
+  {{ $assets.Add "css" (slice $cssScheme $cssMain $cssKatex) }}
   {{ $cssBundle := $assets.Get "css" |
     resources.Concat "css/bundle.css" |
     resources.Minify |
@@ -39,8 +40,11 @@
     integrity="{{ $cssBundle.Data.Integrity }}"
   />
 
+
+  {{ $jsKatex := resources.Get "js/katex.min.js" }}
+  {{ $jsAutoRender := resources.Get "js/auto-render.min.js" }}
   {{ $jsDarkMode := resources.Get "js/darkMode.js" }}
-  {{ $assets.Add "js" (slice $jsDarkMode) }}
+  {{ $assets.Add "js" (slice $jsDarkMode $jsKatex $jsAutoRender) }}
   {{ $jsBundle := $assets.Get "js" |
     resources.Concat "js/bundle.js" |
     resources.Minify |
@@ -53,4 +57,5 @@
     src="{{ $jsBundle.RelPermalink }}"
     integrity="{{ $jsBundle.Data.Integrity }}"
   ></script>
+  {{ partial "katex.html" }}
 </head>
