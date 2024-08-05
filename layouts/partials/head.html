@@ -23,7 +23,9 @@
 
   {{ $cssMain := resources.Get "css/compiled/main.css" }}
   {{ $cssScheme := resources.Get (printf "css/schemes/%s.css" (lower .Site.Params.scheme | default "default")) }}
-  {{ $cssKatex := resources.Get "css/katex.min.css" }}
+  {{ $cssKatex := resources.GetRemote "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" |
+    default (resources.Get "css/katex.min.css")
+  }}
 
   {{ $assets.Add "css" (slice $cssScheme $cssMain $cssKatex) }}
   {{ $cssBundle := $assets.Get "css" |
@@ -41,8 +43,12 @@
   />
 
 
-  {{ $jsKatex := resources.Get "js/katex.min.js" }}
-  {{ $jsAutoRender := resources.Get "js/auto-render.min.js" }}
+  {{ $jsKatex := resources.GetRemote "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" |
+    default (resources.Get "js/katex.min.js")
+  }}
+  {{ $jsAutoRender := resources.GetRemote "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" |
+    default (resources.Get "js/auto-render.min.js")
+  }}
   {{ $jsDarkMode := resources.Get "js/darkMode.js" }}
   {{ $assets.Add "js" (slice $jsDarkMode $jsKatex $jsAutoRender) }}
   {{ $jsBundle := $assets.Get "js" |
